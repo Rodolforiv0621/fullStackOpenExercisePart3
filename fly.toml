@@ -1,0 +1,25 @@
+# fly.toml app configuration file generated for part3-wandering-dew-382 on 2024-09-23T18:10:45-07:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
+
+app = 'part3-wandering-dew-382'
+primary_region = 'sjc'
+
+[build]
+
+[env]
+  PORT = "3000" # added this
+
+[http_service]
+  internal_port = 3000
+  force_https = true
+  auto_stop_machines = 'stop'
+  auto_start_machines = true
+  min_machines_running = 0
+  processes = ['app']
+
+[[vm]]
+  memory = '1gb'
+  cpu_kind = 'shared'
+  cpus = 1
